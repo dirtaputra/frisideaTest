@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'knox',
+    'TestApp'
 ]
 
 MIDDLEWARE = [
@@ -67,6 +70,12 @@ TEMPLATES = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'knox.auth.TokenAuthentication',
+    ]
+}
+
 WSGI_APPLICATION = 'resources.wsgi.application'
 
 
@@ -75,9 +84,13 @@ WSGI_APPLICATION = 'resources.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.mysql',
+        "NAME": "frisidea_test",
+        "USER": "my_user",
+        "PASSWORD": "tehanget99",
+        "HOST": "localhost",
+        "PORT": "3306",
+    },
 }
 
 
